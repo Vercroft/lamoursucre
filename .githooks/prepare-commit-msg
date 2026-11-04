@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+# prepare-commit-msg - strip AI / tool attribution before the commit finalises.
+# Defense in depth: commit-msg still rejects anything that slips through.
+# Portable: no gawk-only features.
+
+set -euo pipefail
+
+MSG_FILE="${1:-}"
+[[ -z "$MSG_FILE" || ! -f "$MSG_FILE" ]] && exit 0
+
+tmp="$(mktemp)"
+trap 'rm -f "$tmp"' EXIT
+
+# Keep only human owner Co-authored-by lines; drop all other Co-authored-by.
+# Drop known AI attribution / email lines.
+grep -Eiv \
+  -e '^[[:space:]]*Co-authored-by:' \
+  -e 'noreply@anthropic\.com' \
+  -e '@cursor\.(com|so|sh)' \
+  -e 'cursoragent@' \
+  -e 'Generated[[:space:]]+with[[:space:]]+(Claude|Cursor|Copilot|ChatGPT|GPT|Codex|Gemini|Devin|Aider|Windsurf)' \
+  -e 'Made[[:space:]]+with[[:space:]]+(Claude|Cursor|Copilot|ChatGPT)' \
+  -e '🤖' \
+  "$MSG_FILE" > "$tmp" || true
+
+# Re-append allowed human co-authors if they were present originally.
+grep -Ei \
+  -e '^[[:space:]]*Co-authored-by:[[:space:]]*dinesh-ad[[:space:]]+<56721895\+dinesh-ad@users\.noreply\.github\.com>[[:space:]]*$' \
+  -e '^[[:space:]]*Co-authored-by:[[:space:]]*sowmipriya[[:space:]]+<13678035\+sowmipriya@users\.noreply\.github\.com>[[:space:]]*$' \
+  "$MSG_FILE" >> "$tmp" || true
+
+# Trim trailing blank lines, keep a single final newline
+awk '
+  { lines[NR] = $0 }
+  END {
+    end = NR
+    while (end > 0 && lines[end] ~ /^[[:space:]]*$/) end--
+    for (i = 1; i <= end; i++) print lines[i]
+  }
+' "$tmp" > "$MSG_FILE"
+# ensure file ends with newline
+[[ -s "$MSG_FILE" ]] && echo >> "$MSG_FILE" || true
+
+exit 0

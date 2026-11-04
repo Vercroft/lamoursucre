@@ -1,0 +1,41 @@
+# L'AmourSucré
+
+Small-batch French bakery site - pâtisserie, cakes, cupcakes.
+
+Bilingual static site: `/en`, `/fr` ( `/` → `/en` ). Design: bone, brass, ink.
+
+Stack & versions: [`docs/STACK.md`](./docs/STACK.md) · Owner docs: [`docs/`](./docs/)
+
+## Quick start
+
+```bash
+nvm use          # Node 24 - see .nvmrc
+npm install
+npm run hooks:install   # once per clone
+npm run dev             # http://localhost:3000
+```
+
+```bash
+npm run lint
+npm run build
+```
+
+## Edit map
+
+Copy lives in dictionaries - not in components.
+
+| Change | File |
+| --- | --- |
+| English / French wording | `src/lib/dictionaries/en.ts` · `fr.ts` |
+| Prices & catalog | `src/lib/menu.ts` |
+| Contact / address / delivery | `src/lib/site.ts` |
+| Photo keys → files | `src/lib/photos.ts` + `public/photos/` |
+| Design tokens | `src/app/globals.css` (`@theme`) |
+
+Day-to-day how-tos (add item, photo, language, deploy): [`docs/OPERATIONS.md`](./docs/OPERATIONS.md)
+
+## Deploy
+
+**Cloudflare Worker with static assets** (static export → `out/`), built in GitHub Actions and uploaded with wrangler. See [`docs/OPERATIONS.md`](./docs/OPERATIONS.md).
+
+Canonical URL: `site.url` in `src/lib/site.ts`.

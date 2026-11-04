@@ -1,0 +1,16 @@
+---
+description: React / App Router component conventions for the bakery site
+globs: src/components/**/*.tsx,src/app/**/*.tsx
+alwaysApply: false
+---
+
+# Components & pages
+
+- Default Server Components; mark client only for interactivity
+- Receive typed dictionary slices (`Dictionary["hero"]`, etc.) - no free-floating strings
+- Use `photos.*` keys and translated `alt` from dictionaries
+- Prefer existing classes: `.display`, `.script`, `.eyebrow`, `.btn`, `.field`, `.hair`
+- `Arch` falls back to `Pastries` SVG when `src` is missing - keep that graceful path
+- Page composition stays in `src/app/[locale]/page.tsx`; new sections get a component file + a dictionary section
+- Order enquiries stay mailto-based in `OrderForm` until a real API is introduced
+- Match existing spacing, arch motif, and reduced-motion behaviour in `globals.css`

@@ -1,0 +1,46 @@
+---
+description: Core L'AmourSucré project rules - structure, content split, i18n, git
+alwaysApply: true
+---
+
+# L'AmourSucré - core rules
+
+Static bilingual bakery site (Next.js App Router). No backend, DB, or auth.
+
+## Ownership of code
+
+- Copy → `src/lib/dictionaries/{en,fr}.ts` only (typed by `types.ts`)
+- Prices / catalog → `src/lib/menu.ts`
+- Contact / ops constants → `src/lib/site.ts`
+- Photo paths → `src/lib/photos.ts` (components use keys, never raw paths)
+- Layout / UI → `src/components/`
+- Routes → `src/app/[locale]/`
+- Owner docs → `docs/` (update when structure or rules change)
+
+## Hard constraints
+
+- Never hard-code EN/FR customer copy inside components
+- Never duplicate prices as strings in dictionaries
+- Every new string/item/photo needs both languages; build must fail closed
+- `"use client"` only when state/effects/browser APIs are required
+- Design system is bone / brass / ink (`globals.css`); do not casually restore pastel tokens
+- Do not add `src/app/api/`, CMS, or auth unless replacing the mailto model
+- Do not commit secrets, private keys, passwords, private IPs, or internal hostnames (see `docs/SECURITY.md` and `.cursor/rules/secrets.mdc`)
+- Do not commit unoptimised multi-MB photos
+- Prefer small, purposeful diffs - no drive-by refactors
+- Never use the Unicode em dash (U+2014); use ASCII `-` or rephrase (hooks enforce)
+
+## Git identity
+
+- Human authors only:
+ - `dinesh-ad` `<56721895+dinesh-ad@users.noreply.github.com>`
+ - `sowmipriya` `<13678035+sowmipriya@users.noreply.github.com>`
+- **Never** add `Co-authored-by` / `Generated with` for Claude, Anthropic, Cursor, Copilot, OpenAI, ChatGPT, Codex, Devin, Windsurf, or any AI tool email (`noreply@anthropic.com`, `cursoragent@`, `@cursor.*`, etc.)
+- **Never commit or push** unless the user explicitly asks
+- Never force-push `main`; never use `--no-verify` unless explicitly requested
+- Full policy: `docs/GIT.md`; hooks live in `.githooks/`
+
+
+## Quality
+
+Before finishing: `npm run lint` and `npm run build` when changes affect types, routes, or dictionaries.

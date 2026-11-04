@@ -1,0 +1,14 @@
+{
+  // Static site only: no Worker script ("main"), so no request is billed.
+  // No account_id here: CI passes it from the production environment.
+  "name": "lamoursucre",
+  "compatibility_date": "2026-10-01",
+  // Public address only through the custom domain the owner attaches once.
+  "workers_dev": false,
+  "preview_urls": false,
+  "assets": {
+    "directory": "./out",
+    // Unknown URLs get the nearest 404.html (Next.js writes out/404.html) with status 404.
+    "not_found_handling": "404-page"
+  }
+}

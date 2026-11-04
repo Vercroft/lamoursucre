@@ -1,0 +1,353 @@
+@import "tailwindcss";
+
+/* ============================================================
+   L'AmourSucré - bone, brass and ink.
+   A quiet, editorial pâtisserie: arch windows, Bodoni capitals,
+   hairline rules and a great deal of space.
+   ============================================================ */
+
+@theme {
+  /* grounds */
+  --color-bone: #f7f4ee;
+  --color-bone-2: #efeae1;
+  --color-oat: #e5ded1;
+  --color-sand: #d6ccb9;
+
+  /* ink */
+  --color-ink: #262520;
+  --color-ink-soft: #6d685e;
+
+  /* accent */
+  --color-brass: #ac8b4e;
+  --color-brass-soft: #c9ae7c;
+
+  --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ============================================================
+   base
+   ============================================================ */
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-bone);
+    color: var(--color-ink);
+    font-family: var(--font-karla), "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 1rem;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-bodoni), "Didot", Georgia, serif;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    line-height: 1.05;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background: var(--color-brass);
+    color: var(--color-bone);
+  }
+
+  :focus-visible {
+    outline: 1.5px solid var(--color-brass);
+    outline-offset: 3px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 11px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-bone-2);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-sand);
+    border: 3px solid var(--color-bone-2);
+    border-radius: 99px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-brass);
+  }
+}
+
+/* ============================================================
+   type
+   ============================================================ */
+
+@layer components {
+  .display {
+    font-family: var(--font-bodoni), "Didot", Georgia, serif;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    /* accented capitals (À Ê Ù) need headroom; the hero opts back in tighter */
+    line-height: 1.08;
+  }
+
+  .script {
+    font-family: var(--font-sacramento), "Snell Roundhand", cursive;
+    font-weight: 400;
+    color: var(--color-brass);
+    line-height: 1.2;
+  }
+
+  .eyebrow {
+    /* 12px at default root - small caps UI, not body */
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--color-ink-soft);
+  }
+
+  .caps {
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+  }
+
+  /* ---------- the arch: this design's signature shape ---------- */
+
+  .arch {
+    border-radius: 999px 999px 6px 6px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .arch-outline {
+    border: 1px solid var(--color-sand);
+  }
+
+  /* ---------- a hairline ending in an open circle ---------- */
+
+  .more-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.9rem;
+    color: var(--color-ink);
+    font-size: 0.875rem;
+    letter-spacing: 0.14em;
+    text-transform: lowercase;
+  }
+  .more-link .line {
+    display: block;
+    width: 3.4rem;
+    height: 1px;
+    background: var(--color-brass);
+    transition: width 0.5s var(--ease-soft);
+  }
+  .more-link .ring {
+    display: grid;
+    place-items: center;
+    width: 2.6rem;
+    height: 2.6rem;
+    border: 1px solid var(--color-brass);
+    border-radius: 999px;
+    transition:
+      background-color 0.4s ease,
+      color 0.4s ease;
+  }
+  .more-link:hover .line {
+    width: 2rem;
+  }
+  .more-link:hover .ring {
+    background: var(--color-brass);
+    color: var(--color-bone);
+  }
+
+  /* ---------- buttons ---------- */
+
+  .btn,
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.7rem;
+    padding: 1.05rem 2.4rem;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: 1px solid;
+    transition:
+      background-color 0.45s var(--ease-soft),
+      border-color 0.45s var(--ease-soft),
+      color 0.45s var(--ease-soft);
+  }
+
+  .btn {
+    border-color: var(--color-ink);
+    background: var(--color-ink);
+    color: var(--color-bone);
+  }
+  .btn:hover {
+    background: var(--color-brass);
+    border-color: var(--color-brass);
+  }
+
+  .btn-outline {
+    border-color: var(--color-sand);
+    background: transparent;
+    color: var(--color-ink);
+  }
+  .btn-outline:hover {
+    border-color: var(--color-brass);
+    color: var(--color-brass);
+  }
+
+  /* ---------- editorial form fields: a rule, not a box ---------- */
+
+  .field {
+    width: 100%;
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid var(--color-sand);
+    border-radius: 0;
+    padding: 0.7rem 0;
+    font-family: inherit;
+    font-size: 1rem;
+    color: var(--color-ink);
+    transition: border-color 0.4s ease;
+  }
+  .field:focus {
+    outline: none;
+  }
+  .field:focus-visible {
+    outline: none;
+    border-bottom-color: var(--color-brass);
+    box-shadow: 0 1px 0 0 var(--color-brass);
+  }
+  .field::placeholder {
+    color: var(--color-ink-soft);
+    opacity: 0.55;
+  }
+
+  .hair {
+    height: 1px;
+    background: var(--color-sand);
+  }
+
+  /* Native mobile menu dialog - full-bleed, no browser chrome */
+  dialog.nav-menu {
+    max-width: none;
+  }
+  dialog.nav-menu::backdrop {
+    background: transparent;
+  }
+}
+
+/* ============================================================
+   texture - a fine paper grain
+   ============================================================ */
+
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.28;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='0.42'/%3E%3C/svg%3E");
+  background-size: 220px 220px;
+}
+
+/*
+ * Turns the flat pastry drawings into brass line engravings without touching
+ * the SVG source: CSS beats SVG presentation attributes, so every fill is
+ * dropped and every edge redrawn as one hairline. Used wherever a photograph
+ * is missing, so the layout never leaves a hole.
+ */
+.line-art :where(path, circle, ellipse, rect, line, polygon, polyline) {
+  fill: none !important;
+  stroke: var(--line-color, var(--color-brass)) !important;
+  stroke-width: 1.6 !important;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+/* ============================================================
+   motion
+   ============================================================ */
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes arch-reveal {
+  from {
+    clip-path: inset(100% 0 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+/* staggered page-load reveal */
+.load-in {
+  opacity: 0;
+  animation: rise-in 1s var(--ease-soft) forwards;
+  animation-delay: var(--delay, 0ms);
+}
+
+/* scroll reveal, driven by IntersectionObserver */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.9s var(--ease-soft) var(--delay, 0ms),
+    transform 0.9s var(--ease-soft) var(--delay, 0ms);
+}
+.reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+.arch-in {
+  animation: arch-reveal 1.4s var(--ease-soft) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+  .load-in {
+    opacity: 1;
+  }
+  .arch-in {
+    animation: none;
+  }
+}

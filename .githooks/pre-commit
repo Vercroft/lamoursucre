@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+# pre-commit - block secrets; no em dash; Biome checks staged files only (no auto-write, no build).
+set -euo pipefail
+
+ROOT="$(git rev-parse --show-toplevel)"
+cd "$ROOT"
+
+fail=0
+
+mapfile -t STAGED < <(git diff --cached --name-only --diff-filter=ACMR || true)
+
+if [[ ${#STAGED[@]} -eq 0 ]]; then
+  exit 0
+fi
+
+echo "→ pre-commit: checking ${#STAGED[@]} staged file(s)"
+
+for f in "${STAGED[@]}"; do
+  case "$f" in
+    AGENTS.md|CLAUDE.md|.claude/settings.local.json)
+      echo "✗ Refusing to commit local agent file: $f" >&2
+      fail=1
+      ;;
+  esac
+done
+
+echo "→ pre-commit: secrets / keys / passwords / private IPs"
+if ! ./scripts/check-no-secrets.sh "${STAGED[@]}"; then
+  fail=1
+fi
+
+echo "→ pre-commit: no em dash (U+2014)"
+if ! ./scripts/check-no-em-dash.sh "${STAGED[@]}"; then
+  fail=1
+fi
+
+if command -v npx >/dev/null 2>&1 && [[ -d node_modules/@biomejs/biome ]]; then
+  echo "→ pre-commit: biome check --staged"
+  if ! npx biome check --staged --files-ignore-unknown=true --no-errors-on-unmatched; then
+    echo "✗ biome failed on staged files (try: npm run lint:fix)" >&2
+    fail=1
+  fi
+else
+  echo "⚠ @biomejs/biome missing - skip lint (run npm install)"
+fi
+
+if [[ "$fail" -ne 0 ]]; then
+  echo "" >&2
+  echo "pre-commit failed. Fix the issues above (do not use --no-verify)." >&2
+  exit 1
+fi
+
+echo "✓ pre-commit ok"
+exit 0
