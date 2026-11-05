@@ -56,15 +56,15 @@ Declared = `package.json`. Resolved = `package-lock.json`.
 | Technology             |       Declared |      Resolved | Purpose           |
 | ---------------------- | -------------: | ------------: | ----------------- |
 | Node.js                |         `24.x` | policy **24** | Runtime           |
-| Next.js                |       `16.3.5` |      `16.3.5` | Framework         |
-| React                  |       `19.2.8` |      `19.2.8` | UI                |
-| React DOM              |       `19.2.8` |      `19.2.8` | DOM               |
+| Next.js                |       `16.4.3` |      `16.4.3` | Framework         |
+| React                  |       `19.3.1` |      `19.3.1` | UI                |
+| React DOM              |       `19.3.1` |      `19.3.1` | DOM               |
 | TypeScript             |           `^5` |       `5.9.3` | Typing            |
 | Tailwind CSS           |           `^4` |       `4.3.3` | CSS               |
 | `@tailwindcss/postcss` |           `^4` |       `4.3.3` | Tailwind PostCSS  |
 | PostCSS                | _(transitive)_ |      `8.5.28` | CSS pipeline      |
-| Biome                  |       `2.5.14` |      `2.5.14` | Lint / format     |
-| `@types/node`          |          `^24` |     `24.13.6` | Node typings      |
+| Biome                  |        `2.6.4` |       `2.6.4` | Lint / format     |
+| `@types/node`          |          `^24` |     `24.19.2` | Node typings      |
 | `@types/react`         |          `^19` |      `19.3.0` | React typings     |
 | `@types/react-dom`     |          `^19` |      `19.3.0` | React DOM typings |
 
