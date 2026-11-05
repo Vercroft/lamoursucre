@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# commit-msg - hard reject AI / tool attribution trailers.
+# commit-msg - reject the em dash (U+2014) in the commit message.
 set -euo pipefail
 
 ROOT="$(git rev-parse --show-toplevel)"
-exec "$ROOT/scripts/check-commit-msg.sh" "$1"
+exec "$ROOT/scripts/check-no-em-dash.sh" "$1"

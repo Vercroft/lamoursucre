@@ -117,7 +117,7 @@ scan_content() {
     report "$f" "forge-token" "$(echo "$hits" | head -3 | tr '\n' ' ')"
   fi
 
-  # Slack / Stripe / OpenAI-ish
+  # Slack / Stripe / other common API key prefixes
   if hits="$(grep -nE '\bxox[baprs]-[0-9A-Za-z-]{10,}\b|\bsk_live_[0-9A-Za-z]{16,}\b|\bsk_test_[0-9A-Za-z]{16,}\b|\bsk-proj-[A-Za-z0-9_-]{20,}\b|\bsk-[A-Za-z0-9]{32,}\b' "$f" 2>/dev/null || true)" \
     && [[ -n "$hits" ]]; then
     report "$f" "vendor-token" "$(echo "$hits" | head -3 | tr '\n' ' ')"

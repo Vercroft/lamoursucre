@@ -1,8 +1,5 @@
 # Every path needs the maintainer's review. The lines below are explicit on purpose:
-# agent, editor and hook config is executable in effect (rule-file backdoors, settings hooks).
+# hook and workflow files run like code.
 * @dinesh-ad
-/.cursor/ @dinesh-ad
-/.claude/ @dinesh-ad
-/.vscode/ @dinesh-ad
 /.githooks/ @dinesh-ad
 /.github/ @dinesh-ad
