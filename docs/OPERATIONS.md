@@ -108,7 +108,7 @@ If the first deploy is refused for permissions, read the error in the deploy job
 
 ### What gates a deploy
 
-`deploy.yml` runs the same checks as `ci.yml` (`npm ci`, `biome ci`, `npm run build`) on the same commit, and the deploy job `needs` that build job, so nothing deploys unless they pass. We chose this over a `workflow_run` gate on CI because it needs no extra trigger and no second checkout of the right commit. If `ci.yml` gains a check, add it to `deploy.yml` too.
+`deploy.yml` runs the same checks as the `build` job of `ci.yml` (the hidden-Unicode check, `npm ci`, `biome ci`, `npm run build`) on the same commit, and the deploy job `needs` that build job, so nothing deploys unless they pass. We chose this over a `workflow_run` gate on CI because it needs no extra trigger and no second checkout of the right commit. If the `build` job gains a check, add it to `deploy.yml` too. The `zizmor` job of `ci.yml` is not repeated there: it audits workflow files, which change only through a pull request where it runs.
 
 Renew the token before it expires: create a new one, replace the environment secret, delete the old token.
 

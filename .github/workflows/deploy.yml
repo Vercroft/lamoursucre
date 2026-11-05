@@ -37,6 +37,7 @@ jobs:
         with:
           node-version-file: ".nvmrc"
           package-manager-cache: false
+      - run: node scripts/check-hidden-unicode.mjs
       - run: npm ci
       - run: npx biome ci .
       - run: npm run build
