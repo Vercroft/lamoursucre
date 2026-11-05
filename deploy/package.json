@@ -3,6 +3,6 @@
   "private": true,
   "description": "Pins wrangler and its dependencies for the deploy job only (see docs/OPERATIONS.md).",
   "dependencies": {
-    "wrangler": "4.154.0"
+    "wrangler": "4.155.0"
   }
 }
