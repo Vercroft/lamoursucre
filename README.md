@@ -36,7 +36,7 @@ Day-to-day how-tos (add item, photo, language, deploy): [`docs/OPERATIONS.md`](.
 
 ## Deploy
 
-**Cloudflare Worker with static assets** (static export → `out/`), built in GitHub Actions and uploaded with wrangler. See [`docs/OPERATIONS.md`](./docs/OPERATIONS.md).
+Static export (`out/`), built in GitHub Actions and uploaded by [`.github/workflows/deploy.yml`](./.github/workflows/deploy.yml) on every push to `main`. See [`docs/OPERATIONS.md`](./docs/OPERATIONS.md).
 
 Canonical URL: `site.url` in `src/lib/site.ts`.
 
