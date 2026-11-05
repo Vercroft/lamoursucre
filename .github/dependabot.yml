@@ -1,0 +1,35 @@
+# Weekly, grouped, with a 7-day cooldown. Security updates skip the cooldown.
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: "/"
+    schedule:
+      interval: weekly
+    cooldown:
+      default-days: 7
+    open-pull-requests-limit: 5
+    groups:
+      npm-root:
+        patterns: ["*"]
+        update-types: [minor, patch]
+  - package-ecosystem: npm
+    directory: "/deploy"
+    schedule:
+      interval: weekly
+    cooldown:
+      default-days: 7
+    open-pull-requests-limit: 5
+    groups:
+      npm-deploy:
+        patterns: ["*"]
+        update-types: [minor, patch]
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: weekly
+    cooldown:
+      default-days: 7
+    open-pull-requests-limit: 5
+    groups:
+      github-actions:
+        patterns: ["*"]

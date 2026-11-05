@@ -39,3 +39,7 @@ Day-to-day how-tos (add item, photo, language, deploy): [`docs/OPERATIONS.md`](.
 **Cloudflare Worker with static assets** (static export → `out/`), built in GitHub Actions and uploaded with wrangler. See [`docs/OPERATIONS.md`](./docs/OPERATIONS.md).
 
 Canonical URL: `site.url` in `src/lib/site.ts`.
+
+## How this is built
+
+The maintainer uses AI-assisted tools (Claude Code, Cursor). Contributors may use any AI tool. Every change, from anyone, is reviewed by a human and must pass CI before it merges.

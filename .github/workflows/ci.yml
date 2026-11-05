@@ -16,16 +16,36 @@ jobs:
   build:
     name: build
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
-      # actions/checkout@v7.0.1
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
-      # actions/setup-node@v7.0.0
-      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version-file: ".nvmrc"
           cache: npm
+      - run: node scripts/check-hidden-unicode.mjs
       - run: npm ci
       - run: npx biome ci .
       - run: npm run build
+
+  zizmor:
+    name: zizmor
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      # zizmor 1.31.1 (published 2026-10-15). The checksum is GitHub's published digest of the release asset.
+      - name: Install zizmor (checksum verified)
+        run: |
+          curl -sSfL -o "$RUNNER_TEMP/zizmor.tar.gz" \
+            https://github.com/zizmorcore/zizmor/releases/download/v1.31.1/zizmor-x86_64-unknown-linux-gnu.tar.gz
+          echo "d185f726bdaf92df78273217dfdd24ebcd6b0ef48cf3ce776ff5762b6e138c99  $RUNNER_TEMP/zizmor.tar.gz" | sha256sum -c -
+          tar -xzf "$RUNNER_TEMP/zizmor.tar.gz" -C "$RUNNER_TEMP" zizmor
+      - name: Audit workflows and Dependabot config
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: '"$RUNNER_TEMP/zizmor" --no-progress --persona=pedantic .github'
