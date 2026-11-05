@@ -51,22 +51,22 @@ Use Active or Maintenance LTS in production - not Current. Do not baseline on 22
 
 ## Versions
 
-Declared = `package.json`. Resolved = `package-lock.json`.
+`package.json` declares each package and `package-lock.json` holds the exact versions that are installed and built. This page states the policy only, so it does not go stale; read the lockfile for a number.
 
-| Technology             |       Declared |      Resolved | Purpose           |
-| ---------------------- | -------------: | ------------: | ----------------- |
-| Node.js                |         `24.x` | policy **24** | Runtime           |
-| Next.js                |       `16.4.3` |      `16.4.3` | Framework         |
-| React                  |       `19.3.1` |      `19.3.1` | UI                |
-| React DOM              |       `19.3.1` |      `19.3.1` | DOM               |
-| TypeScript             |           `^5` |       `5.9.3` | Typing            |
-| Tailwind CSS           |           `^4` |       `4.3.3` | CSS               |
-| `@tailwindcss/postcss` |           `^4` |       `4.3.3` | Tailwind PostCSS  |
-| PostCSS                | _(transitive)_ |      `8.5.28` | CSS pipeline      |
-| Biome                  |        `2.6.4` |       `2.6.4` | Lint / format     |
-| `@types/node`          |          `^24` |     `24.19.2` | Node typings      |
-| `@types/react`         |          `^19` |      `19.3.0` | React typings     |
-| `@types/react-dom`     |          `^19` |      `19.3.0` | React DOM typings |
+| Technology             | Line   | Pinned in `package.json` | Purpose           |
+| ---------------------- | ------ | ------------------------ | ----------------- |
+| Node.js                | 24 LTS | `engines`, `.nvmrc`      | Runtime           |
+| Next.js                | 16     | Exact                    | Framework         |
+| React                  | 19     | Exact                    | UI                |
+| React DOM              | 19     | Exact                    | DOM               |
+| TypeScript             | 5      | Range (`^`)              | Typing            |
+| Tailwind CSS           | 4      | Range (`^`)              | CSS               |
+| `@tailwindcss/postcss` | 4      | Range (`^`)              | Tailwind PostCSS  |
+| PostCSS                | -      | Transitive               | CSS pipeline      |
+| Biome                  | 2      | Exact                    | Lint / format     |
+| `@types/node`          | 24     | Range (`^`)              | Node typings      |
+| `@types/react`         | 19     | Range (`^`)              | React typings     |
+| `@types/react-dom`     | 19     | Range (`^`)              | React DOM typings |
 
 Next.js requires Node `>=20.9.0` (minimum). This repo standardizes on **24.x**.
 
@@ -86,7 +86,7 @@ TypeScript: `strict`, `moduleResolution: "bundler"`, `jsx: "react-jsx"`, `@/*` �
 
 `npm ci` → `npx biome ci .` → `npm run build`
 
-No Dependabot / Renovate / multi-Node matrix in this baseline.
+Dependabot proposes weekly updates (7-day cooldown, grouped). No Renovate, no multi-Node matrix.
 
 ## Python
 
