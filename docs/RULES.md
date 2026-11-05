@@ -12,13 +12,13 @@ Use an ASCII hyphen (`-`), a colon, or rephrase with commas. Pre-commit and comm
 
 ## Content
 
-| Rule | Detail |
-| --- | --- |
-| No copy in components | Components take dictionary slices only |
-| No prices in dictionaries | Amounts in `menu.ts`; render with `formatPrice` |
-| Both languages always | Every key in `en.ts` **and** `fr.ts` (`Dictionary` in `types.ts`) |
-| Photos by key | `photos.macaron` - never `src="/photos/…"` |
-| Site facts once | Contact / radius in `site.ts`. Customer copy that mentions a site fact must be a function of that value (e.g. `footer.delivery(km)`, `how` step/FAQ bodies) - never a second hard-coded `"15 km"` string |
+| Rule                      | Detail                                                                                                                                                                                                   |
+| ------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| No copy in components     | Components take dictionary slices only                                                                                                                                                                   |
+| No prices in dictionaries | Amounts in `menu.ts`; render with `formatPrice`                                                                                                                                                          |
+| Both languages always     | Every key in `en.ts` **and** `fr.ts` (`Dictionary` in `types.ts`)                                                                                                                                        |
+| Photos by key             | `photos.macaron` - never `src="/photos/…"`                                                                                                                                                               |
+| Site facts once           | Contact / radius in `site.ts`. Customer copy that mentions a site fact must be a function of that value (e.g. `footer.delivery(km)`, `how` step/FAQ bodies) - never a second hard-coded `"15 km"` string |
 
 ```tsx
 // bad
@@ -63,12 +63,12 @@ Until a form service exists: enquiry UX in `OrderForm.tsx`, destination from `si
 
 ## Git (summary)
 
-| | |
-| --- | --- |
-| Authors only | `dinesh-ad`, `sowmipriya` - see [GIT.md](./GIT.md) |
-| Default branch | `main` |
-| Commit / push | Only when an owner asks |
-| AI co-authors | Forbidden - hooks enforce |
+|                |                                                    |
+| -------------- | -------------------------------------------------- |
+| Authors only   | `dinesh-ad`, `sowmipriya` - see [GIT.md](./GIT.md) |
+| Default branch | `main`                                             |
+| Commit / push  | Only when an owner asks                            |
+| AI co-authors  | Forbidden - hooks enforce                          |
 
 ```bash
 npm run hooks:install   # once per clone

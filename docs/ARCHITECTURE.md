@@ -6,17 +6,17 @@ Versions: [STACK.md](./STACK.md).
 
 ## Choices
 
-| Piece | Choice |
-| --- | --- |
-| Framework | Next.js App Router |
-| UI | React |
-| Styling | Tailwind CSS v4 |
-| Lint / format | Biome |
-| Fonts | `next/font/google` - Bodoni Moda, Karla, Sacramento |
-| Images | `next/image` + `public/photos/` |
-| i18n | Custom dictionaries (not next-intl) |
-| Deploy | Static export, built and uploaded in CI |
-| Backend / DB / auth / CMS / Python | None |
+| Piece                              | Choice                                              |
+| ---------------------------------- | --------------------------------------------------- |
+| Framework                          | Next.js App Router                                  |
+| UI                                 | React                                               |
+| Styling                            | Tailwind CSS v4                                     |
+| Lint / format                      | Biome                                               |
+| Fonts                              | `next/font/google` - Bodoni Moda, Karla, Sacramento |
+| Images                             | `next/image` + `public/photos/`                     |
+| i18n                               | Custom dictionaries (not next-intl)                 |
+| Deploy                             | Static export, built and uploaded in CI             |
+| Backend / DB / auth / CMS / Python | None                                                |
 
 ## Request flow
 
@@ -48,17 +48,17 @@ site.ts → contact constants
 
 ## Page order
 
-| # | Component | Role | Client |
-| --- | --- | --- | --- |
-| 1 | `Nav` | Header, mobile dialog (+ embeds LanguageToggle) | yes |
-| 2 | `Hero` | Brand + photography | no |
-| 3 | `Collections` | Category arches | no |
-| 4 | `Carte` | Menu + prices | yes |
-| 5 | `Story` | About | no |
-| 6 | `How` | Steps + FAQ | no |
-| 7 | `OrderForm` | Enquiry → mailto | yes |
-| 8 | `Footer` | Hours, contact (+ embeds LanguageToggle) | no |
-| - | `LanguageToggle` | EN/FR navigation landmark | no |
+| #   | Component        | Role                                            | Client |
+| --- | ---------------- | ----------------------------------------------- | ------ |
+| 1   | `Nav`            | Header, mobile dialog (+ embeds LanguageToggle) | yes    |
+| 2   | `Hero`           | Brand + photography                             | no     |
+| 3   | `Collections`    | Category arches                                 | no     |
+| 4   | `Carte`          | Menu + prices                                   | yes    |
+| 5   | `Story`          | About                                           | no     |
+| 6   | `How`            | Steps + FAQ                                     | no     |
+| 7   | `OrderForm`      | Enquiry → mailto                                | yes    |
+| 8   | `Footer`         | Hours, contact (+ embeds LanguageToggle)        | no     |
+| -   | `LanguageToggle` | EN/FR navigation landmark                       | no     |
 
 Anchors: `#top` `#carte` `#story` `#how` `#order` `#visit`.
 
