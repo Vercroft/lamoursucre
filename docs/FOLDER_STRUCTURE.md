@@ -11,7 +11,7 @@ lamoursucre/
 ├── .github/workflows/ci.yml
 ├── docs/                      # owner docs (you are here)
 ├── public/photos/             # optimised JPEGs only
-├── public/_redirects          # Cloudflare: / → /en
+├── public/_redirects          # / → /en
 ├── src/
 │   ├── app/
 │   │   ├── globals.css
@@ -30,7 +30,7 @@ lamoursucre/
 │       ├── enquiry.ts
 │       └── dictionaries/      # types, en, fr, index
 ├── biome.json
-├── next.config.ts             # output: "export" for Cloudflare Pages
+├── next.config.ts             # output: "export"
 ├── package.json · package-lock.json
 ├── .nvmrc
 ├── postcss.config.mjs

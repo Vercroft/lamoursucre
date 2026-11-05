@@ -20,7 +20,7 @@ CI → npm ci · biome ci · next build
 | Lint / format | Biome |
 | Package manager | npm + `package-lock.json` |
 | CI | GitHub Actions |
-| Deploy | Cloudflare Worker with static assets (static HTML export → `out/`) |
+| Deploy | Static HTML export (`out/`), uploaded by `.github/workflows/deploy.yml` |
 | Rendering | Static `/en` · `/fr` |
 | Backend / DB / auth / CMS / Python | None |
 
@@ -32,7 +32,7 @@ CI → npm ci · biome ci · next build
 | Baseline | **Node.js 24 LTS** |
 | Repo | `.nvmrc` → `24` · `engines.node` → `24.x` |
 | CI | `setup-node@v7` reads `.nvmrc` |
-| Deploy | Cloudflare Worker serves static `out/` (build on Node 24) |
+| Deploy | Static `out/` (build on Node 24) |
 | npm | Bundled with Node 24 + lockfile + `npm ci` (no `packageManager` pin) |
 
 ### Lifecycle (as of 2026-09-20)
@@ -47,7 +47,7 @@ From the [Node.js Release schedule](https://github.com/nodejs/Release):
 
 Use Active or Maintenance LTS in production - not Current. Do not baseline on 22. Do not ship on 26 until it is LTS and verified.
 
-**Next migration:** after Node 26 enters LTS, dedicated change checking Next.js, Cloudflare Workers, Biome, and build.
+**Next migration:** after Node 26 enters LTS, dedicated change checking Next.js, the deploy workflow, Biome, and build.
 
 ## Versions
 

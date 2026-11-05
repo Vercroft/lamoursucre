@@ -24,7 +24,7 @@ No commit/push until an owner says so. After clone: `npm run hooks:install`.
 - [ ] Confirm address in `site.ts`
 - [ ] Confirm `deliveryRadiusKm` + FAQ deposit/notice copy
 - [ ] Bakery JSON-LD only after address/phone verified
-- [ ] DNS → the Cloudflare Worker (custom domain); smoke-test `/en`, `/fr`, mailto on a phone
+- [ ] DNS and domain set up for the live site; smoke-test `/en`, `/fr`, mailto on a phone
 - [ ] Re-check photo weights (`public/photos/`, esp. `choux.jpg`)
 - [ ] After New Year: rebuild so the footer copyright year (baked at `next build`) advances
 

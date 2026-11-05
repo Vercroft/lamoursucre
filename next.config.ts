@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 /**
- * Static HTML export for Workers static assets (no Node server).
+ * Static HTML export (no Node server).
  * Locale redirect `/` → `/en` is handled by `public/_redirects`.
  */
 const nextConfig: NextConfig = {
