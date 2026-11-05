@@ -21,6 +21,8 @@ npm run hooks:install   # once per clone
 | `npm run lint:fix` | Biome safe fixes                      |
 | `npm run format`   | Format only                           |
 
+`next dev` is configured (`agentRules: false` in `next.config.ts`) not to generate instruction files in the repo, and `/AGENTS.md` and `/CLAUDE.md` are ignored as a backstop.
+
 ## Edit map
 
 | Change                              | File(s)                             |
@@ -40,7 +42,7 @@ Paths under `src/lib/` unless noted.
 ## Add a menu item
 
 1. Add id to `ItemId` in `menu.ts`.
-2. Add the row (use `cake()` / `cupcake()` helpers when they fit).
+2. Add the row to its category (use `cake()` / `cupcake()` helpers when they fit).
 3. Add copy under `items` in **both** dictionaries.
 4. `npm run build`.
 
@@ -88,7 +90,7 @@ The site is a static export (`out/`). `.github/workflows/deploy.yml` builds it a
 
 ### What gates a deploy
 
-`deploy.yml` runs the same checks as the `build` job of `ci.yml` (the hidden-Unicode check, the `_headers` check, `npm ci`, `biome ci`, `npm run build`) on the same commit, and the deploy job `needs` that build job, so nothing deploys unless they pass. We chose this over a `workflow_run` gate on CI because it needs no extra trigger and no second checkout of the right commit. If the `build` job gains a check, add it to `deploy.yml` too. The `zizmor` job of `ci.yml` is not repeated there: it audits workflow files, which change only through a pull request where it runs.
+`deploy.yml` runs the same checks as the `build-and-test` job of `ci.yml` (the hidden-Unicode check, the `_headers` check, the tests of `scripts/check-contributors.mjs`, `npm ci`, `biome ci`, `npm run build`) on the same commit, and the deploy job `needs` that build job, so nothing deploys unless they pass. We chose this over a `workflow_run` gate on CI because it needs no extra trigger and no second checkout of the right commit. If the `build-and-test` job gains a check, add it to `deploy.yml` too. The `workflow-security` job of `ci.yml` is not repeated there: it audits workflow files, which change only through a pull request where it runs.
 
 ### Build locally
 

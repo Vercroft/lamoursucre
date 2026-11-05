@@ -8,12 +8,11 @@ Owner docs for **dinesh-ad** and **sowmipriya**. Root [`README.md`](../README.md
 | [FOLDER_STRUCTURE.md](./FOLDER_STRUCTURE.md) | Repo layout                               |
 | [ARCHITECTURE.md](./ARCHITECTURE.md)         | Request flow & page composition           |
 | [RULES.md](./RULES.md)                       | Hard coding / content rules               |
+| [CONVENTIONS.md](./CONVENTIONS.md)           | Components, i18n and content steps        |
 | [OPERATIONS.md](./OPERATIONS.md)             | Run, edit, deploy                         |
-| [GIT.md](./GIT.md)                           | Authors, hooks, no AI co-authors          |
+| [GIT.md](./GIT.md)                           | Authors, hooks, commit identities         |
 | [SECURITY.md](./SECURITY.md)                 | Secrets, keys, IPs - keep them off GitHub |
 | [OWNER.md](./OWNER.md)                       | Launch checklist & debt                   |
-
-Cursor rules mirror the same constraints: [`.cursor/rules/`](../.cursor/rules/).
 
 ```text
 lib (content) → app/[locale] (page) → components (UI) → globals.css (tokens)

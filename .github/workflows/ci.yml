@@ -13,8 +13,8 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build:
-    name: build
+  build-and-test:
+    name: build-and-test
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -27,12 +27,13 @@ jobs:
           cache: npm
       - run: node scripts/check-hidden-unicode.mjs
       - run: node scripts/check-headers.mjs
+      - run: node --test scripts/check-contributors.test.mjs
       - run: npm ci
       - run: npx biome ci .
       - run: npm run build
 
-  zizmor:
-    name: zizmor
+  workflow-security:
+    name: workflow-security
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -51,8 +52,8 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: '"$RUNNER_TEMP/zizmor" --no-progress --persona=pedantic .github'
 
-  links:
-    name: links
+  doc-links:
+    name: doc-links
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -66,3 +67,28 @@ jobs:
           lycheeVersion: v0.24.2
           args: --offline --include-fragments --no-progress './**/*.md'
           jobSummary: false
+
+  commit-identities:
+    name: commit-identities
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version-file: ".nvmrc"
+          package-manager-cache: false
+      # The approved people are listed in the organization variable ALLOWED_COMMIT_IDENTITIES.
+      - name: Check commit authors, committers and co-authors
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          PR_AUTHOR: ${{ github.event.pull_request.user.login }}
+          ALLOWED_COMMIT_IDENTITIES: ${{ vars.ALLOWED_COMMIT_IDENTITIES }}
+        run: node scripts/check-contributors.mjs

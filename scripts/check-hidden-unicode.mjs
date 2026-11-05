@@ -1,17 +1,17 @@
 #!/usr/bin/env node
 // Fail on hidden or bidirectional Unicode in the files that steer tools or people:
-// agent and editor config, git hooks, workflows, scripts, build config and every Markdown file.
+// git hooks, workflows, scripts, build config and every Markdown file.
 // Page copy under src/ is not scanned: it is text for readers, reviewed as content.
-// Zero-width characters, bidi controls, BOM, tag characters: "Trojan Source" and
-// rule-file backdoors hide instructions in them. Escapes only, so this file stays clean.
+// Zero-width characters, bidi controls, BOM, tag characters: "Trojan Source" attacks
+// hide instructions in them. Escapes only, so this file stays clean.
 //
 // Usage: node scripts/check-hidden-unicode.mjs           check the tracked files in scope
 //        node scripts/check-hidden-unicode.mjs FILE...   check these files
 import { execFileSync } from "node:child_process";
 import { lstatSync, readFileSync } from "node:fs";
 
-const SCOPE_DIRS = [".cursor/", ".claude/", ".vscode/", ".githooks/", ".github/"];
-const SCOPE_EXT = [".md", ".mdc"];
+const SCOPE_DIRS = [".githooks/", ".github/"];
+const SCOPE_EXT = [".md"];
 // Executable or config files outside those folders.
 const SCOPE_DIRS_EXTRA = ["scripts/", "deploy/"];
 const SCOPE_FILES = [

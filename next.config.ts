@@ -6,6 +6,8 @@ import type { NextConfig } from "next";
  */
 const nextConfig: NextConfig = {
   output: "export",
+  // next dev must not write instruction files into the repo.
+  agentRules: false,
   images: {
     // next/image optimizer needs a server; static hosting serves files as-is.
     unoptimized: true,

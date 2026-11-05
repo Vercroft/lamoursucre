@@ -13,7 +13,7 @@ For **dinesh-ad** and **sowmipriya** - not customer-facing.
 | ------ | --------------------------------------------- |
 | Remote | `https://github.com/Vercroft/lamoursucre.git` |
 
-Commit as yourself. No AI co-authors - [GIT.md](./GIT.md).  
+Commit as yourself. Only approved people may appear as author or co-author - [GIT.md](./GIT.md).  
 No commit/push until an owner says so. After clone: `npm run hooks:install`.
 
 ## Launch checklist

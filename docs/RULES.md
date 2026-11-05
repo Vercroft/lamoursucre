@@ -1,6 +1,6 @@
 # Rules
 
-Hard constraints. Change the architecture deliberately - then update this file and matching `.cursor/rules`.
+Hard constraints. Change the architecture deliberately - then update this file and the matching doc (see [CONVENTIONS.md](./CONVENTIONS.md) for the component and content steps).
 
 ## Typography
 
@@ -53,10 +53,6 @@ Bone / brass / ink in `globals.css`. Do not revive the old pastel palette unless
 - No secrets, `.env`, private keys, passwords, private IPs, or internal hostnames in git (enforced by `scripts/check-no-secrets.sh` - see [SECURITY.md](./SECURITY.md)).
 - No huge unoptimised photo originals in git.
 
-## Agent instruction files
-
-`next dev` may regenerate `AGENTS.md` / `CLAUDE.md` at the repo root. Those files are **gitignored** and **blocked by pre-commit** on purpose - do not commit them. Shared agent policy lives in `.cursor/rules/` and `docs/`.
-
 ## Order form
 
 Until a form service exists: enquiry UX in `OrderForm.tsx`, destination from `site.email`. Deposits/payments in copy are business rules - not collected in code.
@@ -68,7 +64,7 @@ Until a form service exists: enquiry UX in `OrderForm.tsx`, destination from `si
 | Authors only   | `dinesh-ad`, `sowmipriya` - see [GIT.md](./GIT.md) |
 | Default branch | `main`                                             |
 | Commit / push  | Only when an owner asks                            |
-| AI co-authors  | Forbidden - hooks enforce                          |
+| Co-authors     | Approved people only - CI enforces                 |
 
 ```bash
 npm run hooks:install   # once per clone
@@ -85,4 +81,4 @@ Must prerender `/en` and `/fr` cleanly.
 
 ## Docs hygiene
 
-Structure, architecture, or hard-rule changes → update the matching `docs/` file and `.cursor/rules` in the same change. Versions → [STACK.md](./STACK.md).
+Structure, architecture, or hard-rule changes → update the matching `docs/` file in the same change. Versions → [STACK.md](./STACK.md).

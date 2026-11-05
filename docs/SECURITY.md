@@ -13,14 +13,14 @@ Keep secrets **off GitHub**. The only reliable control is stopping them **before
 | Infra addresses | Private / loopback IPs (`10.*`, `192.168.*`, `172.16-31.*`, `127.*`) |
 | Internal hosts  | `*.internal`, `*.corp`, `*.lan`, credential URLs `user:pass@host`    |
 
-Public marketing hostnames that belong on the site (for example `lamoursucre.com` in `site.url`) are **not** secrets.
+Public marketing hostnames and links that belong on the site (for example `lamoursucre.com` in `site.url`, or the bakery's public social pages) are **not** secrets. This applies to code, docs, screenshots of environment settings and commit messages alike.
 
 ## Local defence (this repo)
 
 1. **`.gitignore`** - ignores `.env*`, `*.pem`, and related material.
 2. **`scripts/check-no-secrets.sh`** - scans staged paths for filenames and content patterns.
 3. **`.githooks/pre-commit`** - runs that script on every commit (plus em dash + Biome).
-4. **Cursor rule** [`.cursor/rules/secrets.mdc`](../.cursor/rules/secrets.mdc) - agents must not invent or commit secrets.
+4. **Placeholders only** - examples and sample config (for example `.env.example`) hold empty or placeholder values (`CHANGE_ME`, `process.env.*`, `<YOUR_TOKEN>`), never a real one. If a real secret turns up in a terminal, chat or log, do not write it into any tracked file, commit message or doc.
 5. **Never `--no-verify`** unless an owner explicitly asks.
 
 ```bash

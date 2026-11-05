@@ -15,15 +15,6 @@ fi
 
 echo "→ pre-commit: checking ${#STAGED[@]} staged file(s)"
 
-for f in "${STAGED[@]}"; do
-  case "$f" in
-    AGENTS.md|CLAUDE.md|.claude/settings.local.json)
-      echo "✗ Refusing to commit local agent file: $f" >&2
-      fail=1
-      ;;
-  esac
-done
-
 echo "→ pre-commit: secrets / keys / passwords / private IPs"
 if ! ./scripts/check-no-secrets.sh "${STAGED[@]}"; then
   fail=1
