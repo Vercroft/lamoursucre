@@ -1,6 +1,6 @@
 # Security
 
-Keep secrets **off GitHub**. The only reliable control is stopping them **before** `git commit` - once they are in history, deleting a later commit does not erase them ([Reddit / devops on gitleaks](https://www.reddit.com/r/devops/comments/hy4r5u/gitleaks_is_a_sast_tool_for_detecting_hardcoded/); [GitHub secret scanning](https://docs.github.com/en/code-security/concepts/secret-security/secret-scanning)).
+Keep secrets **off GitHub**. The only reliable control is stopping them **before** `git commit` - once they are in history, deleting a later commit does not erase them ([GitHub: removing sensitive data](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository); [GitHub secret scanning](https://docs.github.com/en/code-security/concepts/secret-security/secret-scanning)).
 
 ## What must never be committed
 
