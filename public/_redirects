@@ -1,2 +1,2 @@
-# Workers static assets: bare domain → default locale (see src/lib/i18n defaultLocale).
+# Bare domain → default locale (see src/lib/i18n defaultLocale).
 / /en 301

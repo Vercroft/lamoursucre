@@ -15,13 +15,13 @@ Versions: [STACK.md](./STACK.md).
 | Fonts | `next/font/google` - Bodoni Moda, Karla, Sacramento |
 | Images | `next/image` + `public/photos/` |
 | i18n | Custom dictionaries (not next-intl) |
-| Deploy | Cloudflare Worker (static assets), built in CI |
+| Deploy | Static export, built and uploaded in CI |
 | Backend / DB / auth / CMS / Python | None |
 
 ## Request flow
 
 ```text
-/  → Cloudflare _redirects → /en
+/  → _redirects → /en
 /en | /fr
   → generateStaticParams (both prerendered into out/)
   → layout: lang, fonts, metadata, hreflang
