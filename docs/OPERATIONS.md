@@ -21,6 +21,8 @@ npm run hooks:install   # once per clone
 | `npm run lint:fix` | Biome safe fixes                      |
 | `npm run format`   | Format only                           |
 
+`next dev` is configured (`agentRules: false` in `next.config.ts`) not to generate instruction files in the repo, and `/AGENTS.md` and `/CLAUDE.md` are ignored as a backstop.
+
 ## Edit map
 
 | Change                              | File(s)                             |

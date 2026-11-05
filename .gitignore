@@ -69,3 +69,7 @@ next-env.d.ts
 
 # --- caches ---
 .turbo
+
+# --- files next dev can generate (kept out even if generation is turned on again) ---
+/AGENTS.md
+/CLAUDE.md
