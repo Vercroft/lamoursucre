@@ -13,8 +13,8 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build:
-    name: build
+  build-and-test:
+    name: build-and-test
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -32,8 +32,8 @@ jobs:
       - run: npx biome ci .
       - run: npm run build
 
-  zizmor:
-    name: zizmor
+  workflow-security:
+    name: workflow-security
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -52,8 +52,8 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: '"$RUNNER_TEMP/zizmor" --no-progress --persona=pedantic .github'
 
-  links:
-    name: links
+  doc-links:
+    name: doc-links
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -68,8 +68,8 @@ jobs:
           args: --offline --include-fragments --no-progress './**/*.md'
           jobSummary: false
 
-  contributors:
-    name: contributors
+  commit-identities:
+    name: commit-identities
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     timeout-minutes: 5

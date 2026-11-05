@@ -1,5 +1,5 @@
 # Deploy on push to main: build here, upload only. Static files, no Worker script.
-# The build job runs the same checks as ci.yml (lint, build) on the same commit and
+# The build job runs the same checks as the build-and-test job of ci.yml (lint, build) on the same commit and
 # holds no secret; the deploy job needs it, so a failed check stops the deploy.
 # The deploy job runs in the "production" environment, does no checkout, and
 # receives only the staged files and the two secrets.

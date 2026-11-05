@@ -90,7 +90,7 @@ The site is a static export (`out/`). `.github/workflows/deploy.yml` builds it a
 
 ### What gates a deploy
 
-`deploy.yml` runs the same checks as the `build` job of `ci.yml` (the hidden-Unicode check, the `_headers` check, the tests of `scripts/check-contributors.mjs`, `npm ci`, `biome ci`, `npm run build`) on the same commit, and the deploy job `needs` that build job, so nothing deploys unless they pass. We chose this over a `workflow_run` gate on CI because it needs no extra trigger and no second checkout of the right commit. If the `build` job gains a check, add it to `deploy.yml` too. The `zizmor` job of `ci.yml` is not repeated there: it audits workflow files, which change only through a pull request where it runs.
+`deploy.yml` runs the same checks as the `build-and-test` job of `ci.yml` (the hidden-Unicode check, the `_headers` check, the tests of `scripts/check-contributors.mjs`, `npm ci`, `biome ci`, `npm run build`) on the same commit, and the deploy job `needs` that build job, so nothing deploys unless they pass. We chose this over a `workflow_run` gate on CI because it needs no extra trigger and no second checkout of the right commit. If the `build-and-test` job gains a check, add it to `deploy.yml` too. The `workflow-security` job of `ci.yml` is not repeated there: it audits workflow files, which change only through a pull request where it runs.
 
 ### Build locally
 

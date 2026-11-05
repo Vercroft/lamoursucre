@@ -9,7 +9,7 @@ Do **not** commit or push until an owner asks.
 | Eng     | [dinesh-ad](https://github.com/dinesh-ad)   | `56721895+dinesh-ad@users.noreply.github.com`  |
 | Product | [sowmipriya](https://github.com/sowmipriya) | `13678035+sowmipriya@users.noreply.github.com` |
 
-Only approved people may appear as commit author, committer or `Co-authored-by`. CI enforces this: the `contributors` job of `ci.yml` runs `scripts/check-contributors.mjs` on every pull request and reads the approved list from the organization variable `ALLOWED_COMMIT_IDENTITIES`. Dependabot's own commits are built in.
+Only approved people may appear as commit author, committer or `Co-authored-by`. CI enforces this: the `commit-identities` job of `ci.yml` runs `scripts/check-contributors.mjs` on every pull request and reads the approved list from the organization variable `ALLOWED_COMMIT_IDENTITIES`. Dependabot's own commits are built in.
 
 ## Hooks
 
