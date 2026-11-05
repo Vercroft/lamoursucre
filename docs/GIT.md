@@ -4,9 +4,9 @@ Do **not** commit or push until an owner asks.
 
 ## Authors
 
-| Role | GitHub | Commit email |
-| --- | --- | --- |
-| Eng | [dinesh-ad](https://github.com/dinesh-ad) | `56721895+dinesh-ad@users.noreply.github.com` |
+| Role    | GitHub                                      | Commit email                                   |
+| ------- | ------------------------------------------- | ---------------------------------------------- |
+| Eng     | [dinesh-ad](https://github.com/dinesh-ad)   | `56721895+dinesh-ad@users.noreply.github.com`  |
 | Product | [sowmipriya](https://github.com/sowmipriya) | `13678035+sowmipriya@users.noreply.github.com` |
 
 Only these identities may be `Author` or `Co-authored-by`.
@@ -38,11 +38,11 @@ npm run hooks:install
 # or: ./scripts/install-git-hooks.sh
 ```
 
-| Hook | Behaviour |
-| --- | --- |
-| `pre-commit` | Block secrets (see [SECURITY.md](./SECURITY.md)); local agent files; em dash (U+2014); Biome on staged files |
-| `prepare-commit-msg` | Strip AI trailers; keep human co-authors |
-| `commit-msg` | Fail if forbidden attribution or em dash remains |
+| Hook                 | Behaviour                                                                                                    |
+| -------------------- | ------------------------------------------------------------------------------------------------------------ |
+| `pre-commit`         | Block secrets (see [SECURITY.md](./SECURITY.md)); local agent files; em dash (U+2014); Biome on staged files |
+| `prepare-commit-msg` | Strip AI trailers; keep human co-authors                                                                     |
+| `commit-msg`         | Fail if forbidden attribution or em dash remains                                                             |
 
 Do not use `--no-verify` unless an owner explicitly requests it.
 
