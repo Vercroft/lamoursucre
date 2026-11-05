@@ -5,8 +5,7 @@
 # receives only the staged files and the two secrets.
 #
 # Settings of the "production" environment (the owner sets them in GitHub):
-# - secret CLOUDFLARE_API_TOKEN: Workers Editor on the lamoursucre Worker only
-#   (docs/OPERATIONS.md, "Deploy").
+# - secret CLOUDFLARE_API_TOKEN: a deploy token limited to this site.
 # - secret CLOUDFLARE_ACCOUNT_ID: the account id (a secret so logs mask it).
 # - deployment branches: main only.
 name: Deploy
@@ -82,7 +81,7 @@ jobs:
           fi
       # Wrangler and its dependencies come from the committed lockfile
       # (deploy/package-lock.json), without install scripts. The lockfile was made
-      # with the 7-day cooldown (docs/OPERATIONS.md, "Update wrangler").
+      # with the 7-day cooldown (deploy/package.json).
       - name: Install wrangler from the lockfile
         working-directory: site
         run: npm ci --ignore-scripts --no-audit --no-fund

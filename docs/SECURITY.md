@@ -6,7 +6,7 @@ Keep secrets **off GitHub**. The only reliable control is stopping them **before
 
 | Kind | Examples |
 | --- | --- |
-| Tokens | GitHub PAT, Cloudflare API token, Slack bot token, Stripe keys |
+| Tokens | GitHub PAT, hosting API token, Slack bot token, Stripe keys |
 | Keys | Private keys (PEM / OpenSSH), shared secrets, `*.pem` / `id_rsa` |
 | Passwords | DB passwords, basic-auth, `password=` assignments |
 | Env files | `.env`, `.env.local`, anything matching `.env*` |
@@ -40,4 +40,4 @@ Industry practice matches this shape: local pre-commit secret detection ([Gitlea
 
 ## This project today
 
-Static site on Cloudflare Workers (static assets). No server secrets required for the current mailto model. When payments or APIs appear later: env vars only, never literals in `src/`.
+Static site. No server secrets required for the current mailto model. When payments or APIs appear later: env vars only, never literals in `src/`.
