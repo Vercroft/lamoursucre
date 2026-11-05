@@ -4,14 +4,14 @@ Keep secrets **off GitHub**. The only reliable control is stopping them **before
 
 ## What must never be committed
 
-| Kind | Examples |
-| --- | --- |
-| Tokens | GitHub PAT, hosting API token, Slack bot token, Stripe keys |
-| Keys | Private keys (PEM / OpenSSH), shared secrets, `*.pem` / `id_rsa` |
-| Passwords | DB passwords, basic-auth, `password=` assignments |
-| Env files | `.env`, `.env.local`, anything matching `.env*` |
+| Kind            | Examples                                                             |
+| --------------- | -------------------------------------------------------------------- |
+| Tokens          | GitHub PAT, hosting API token, Slack bot token, Stripe keys          |
+| Keys            | Private keys (PEM / OpenSSH), shared secrets, `*.pem` / `id_rsa`     |
+| Passwords       | DB passwords, basic-auth, `password=` assignments                    |
+| Env files       | `.env`, `.env.local`, anything matching `.env*`                      |
 | Infra addresses | Private / loopback IPs (`10.*`, `192.168.*`, `172.16-31.*`, `127.*`) |
-| Internal hosts | `*.internal`, `*.corp`, `*.lan`, credential URLs `user:pass@host` |
+| Internal hosts  | `*.internal`, `*.corp`, `*.lan`, credential URLs `user:pass@host`    |
 
 Public marketing hostnames that belong on the site (for example `lamoursucre.com` in `site.url`) are **not** secrets.
 

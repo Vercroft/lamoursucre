@@ -24,13 +24,13 @@ npm run build
 
 Copy lives in dictionaries - not in components.
 
-| Change | File |
-| --- | --- |
-| English / French wording | `src/lib/dictionaries/en.ts` · `fr.ts` |
-| Prices & catalog | `src/lib/menu.ts` |
-| Contact / address / delivery | `src/lib/site.ts` |
-| Photo keys → files | `src/lib/photos.ts` + `public/photos/` |
-| Design tokens | `src/app/globals.css` (`@theme`) |
+| Change                       | File                                   |
+| ---------------------------- | -------------------------------------- |
+| English / French wording     | `src/lib/dictionaries/en.ts` · `fr.ts` |
+| Prices & catalog             | `src/lib/menu.ts`                      |
+| Contact / address / delivery | `src/lib/site.ts`                      |
+| Photo keys → files           | `src/lib/photos.ts` + `public/photos/` |
+| Design tokens                | `src/app/globals.css` (`@theme`)       |
 
 Day-to-day how-tos (add item, photo, language, deploy): [`docs/OPERATIONS.md`](./docs/OPERATIONS.md)
 

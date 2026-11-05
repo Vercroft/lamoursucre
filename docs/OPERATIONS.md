@@ -12,28 +12,28 @@ npm run hooks:install   # once per clone
 
 ## Commands
 
-| Command | Use |
-| --- | --- |
-| `npm run dev` | Local - http://localhost:3000 → `/en` |
-| `npm run build` | Static export to `out/` |
-| `npm run start` | Not used (static site) |
-| `npm run lint` | Biome check |
-| `npm run lint:fix` | Biome safe fixes |
-| `npm run format` | Format only |
+| Command            | Use                                   |
+| ------------------ | ------------------------------------- |
+| `npm run dev`      | Local - http://localhost:3000 → `/en` |
+| `npm run build`    | Static export to `out/`               |
+| `npm run start`    | Not used (static site)                |
+| `npm run lint`     | Biome check                           |
+| `npm run lint:fix` | Biome safe fixes                      |
+| `npm run format`   | Format only                           |
 
 ## Edit map
 
-| Change | File(s) |
-| --- | --- |
-| English / French copy | `dictionaries/en.ts` · `fr.ts` |
-| Prices / items / categories | `menu.ts` (+ `ItemId`) |
-| Currency | `CURRENCY` in `i18n.ts` |
-| Email, phone, IG, address, delivery | `site.ts` |
-| Opening hours | `footer.hours` in both dictionaries |
-| Photo file mapping | `photos.ts` + section `shots` |
-| Photo alt text | `photos` in both dictionaries |
-| Tokens / motion | `globals.css` `@theme` |
-| Hero tagline parts | `hero` in both dictionaries |
+| Change                              | File(s)                             |
+| ----------------------------------- | ----------------------------------- |
+| English / French copy               | `dictionaries/en.ts` · `fr.ts`      |
+| Prices / items / categories         | `menu.ts` (+ `ItemId`)              |
+| Currency                            | `CURRENCY` in `i18n.ts`             |
+| Email, phone, IG, address, delivery | `site.ts`                           |
+| Opening hours                       | `footer.hours` in both dictionaries |
+| Photo file mapping                  | `photos.ts` + section `shots`       |
+| Photo alt text                      | `photos` in both dictionaries       |
+| Tokens / motion                     | `globals.css` `@theme`              |
+| Hero tagline parts                  | `hero` in both dictionaries         |
 
 Paths under `src/lib/` unless noted.
 
@@ -67,13 +67,13 @@ Route, toggle, and static params follow automatically.
 
 ## SEO files
 
-| File | Role |
-| --- | --- |
-| `src/app/sitemap.ts` | `/en` + `/fr` + alternates |
-| `src/app/robots.ts` | Allow + sitemap |
-| `[locale]/layout.tsx` | Metadata, canonical, hreflang, OG |
-| `public/_redirects` | `/` → `/en` |
-| `public/_headers` | Security headers (CSP, frame denial, nosniff, …) |
+| File                  | Role                                             |
+| --------------------- | ------------------------------------------------ |
+| `src/app/sitemap.ts`  | `/en` + `/fr` + alternates                       |
+| `src/app/robots.ts`   | Allow + sitemap                                  |
+| `[locale]/layout.tsx` | Metadata, canonical, hreflang, OG                |
+| `public/_redirects`   | `/` → `/en`                                      |
+| `public/_headers`     | Security headers (CSP, frame denial, nosniff, …) |
 
 No Bakery JSON-LD until phone/address in `site.ts` are verified.
 
