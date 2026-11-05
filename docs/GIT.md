@@ -9,25 +9,14 @@ Do **not** commit or push until an owner asks.
 | Eng     | [dinesh-ad](https://github.com/dinesh-ad)   | `56721895+dinesh-ad@users.noreply.github.com`  |
 | Product | [sowmipriya](https://github.com/sowmipriya) | `13678035+sowmipriya@users.noreply.github.com` |
 
-Only these identities may be `Author` or `Co-authored-by`.
-
-## No AI / tool co-authors
-
-Forbidden in subject, body, and trailers:
-
-- `Co-authored-by` except the two humans above
-- Anthropic / Cursor / OpenAI / Copilot / ChatGPT / Claude / Devin / Windsurf / similar tool emails
-- `Generated with …` / `Made with …` tool attribution lines
-
-Agents must never append those trailers. Prefer empty attribution in tool settings.
+Only approved people may appear as commit author, committer or `Co-authored-by`. CI enforces this: the `contributors` job of `ci.yml` runs `scripts/check-contributors.mjs` on every pull request and reads the approved list from the organization variable `ALLOWED_COMMIT_IDENTITIES`. Dependabot's own commits are built in.
 
 ## Hooks
 
 ```text
 .githooks/pre-commit           # secrets + no em dash + biome --staged
-.githooks/prepare-commit-msg   # strip AI attribution if injected
-.githooks/commit-msg           # reject AI attribution + em dash
-scripts/check-commit-msg.sh
+.githooks/commit-msg           # no em dash in the message
+scripts/check-contributors.mjs # CI: commit identities (see above)
 scripts/check-no-em-dash.sh
 scripts/check-no-secrets.sh    # tokens, keys, passwords, private IPs, internal hosts
 scripts/install-git-hooks.sh   # core.hooksPath → .githooks
@@ -38,17 +27,12 @@ npm run hooks:install
 # or: ./scripts/install-git-hooks.sh
 ```
 
-| Hook                 | Behaviour                                                                                                    |
-| -------------------- | ------------------------------------------------------------------------------------------------------------ |
-| `pre-commit`         | Block secrets (see [SECURITY.md](./SECURITY.md)); local agent files; em dash (U+2014); Biome on staged files |
-| `prepare-commit-msg` | Strip AI trailers; keep human co-authors                                                                     |
-| `commit-msg`         | Fail if forbidden attribution or em dash remains                                                             |
+| Hook         | Behaviour                                                                                 |
+| ------------ | ----------------------------------------------------------------------------------------- |
+| `pre-commit` | Block secrets (see [SECURITY.md](./SECURITY.md)); em dash (U+2014); Biome on staged files |
+| `commit-msg` | Fail if the message contains an em dash                                                   |
 
 Do not use `--no-verify` unless an owner explicitly requests it.
-
-```bash
-./scripts/check-commit-msg.sh /path/to/COMMIT_EDITMSG
-```
 
 ## Discipline
 

@@ -5,9 +5,7 @@ Next.js App Router layout. Keep this shape until there is a real backend need.
 ```text
 lamoursucre/
 ├── .githooks/                 # versioned hooks (core.hooksPath)
-├── scripts/                   # install-git-hooks, check-commit-msg, check-no-em-dash
-├── .claude/settings.json      # empty AI commit attribution
-├── .cursor/rules/             # Cursor agent rules
+├── scripts/                   # install-git-hooks, check-contributors, check-no-em-dash
 ├── .github/workflows/ci.yml
 ├── docs/                      # owner docs (you are here)
 ├── public/photos/             # optimised JPEGs only
@@ -49,7 +47,6 @@ Build output `out/` is gitignored. Versions: [STACK.md](./STACK.md).
 | Data   | `src/lib/`        | Menu, site, i18n, dictionaries | JSX           |
 | Assets | `public/`         | Static files                   | Logic         |
 | Docs   | `docs/`           | Owner rules                    | Runtime       |
-| Agent  | `.cursor/rules/`  | AI guardrails                  | App behaviour |
 
 ## Naming
 
