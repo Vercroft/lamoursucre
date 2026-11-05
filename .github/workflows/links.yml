@@ -1,0 +1,31 @@
+name: Links
+
+# External links change without a commit, so they are checked weekly, not on pull requests.
+# File links between the Markdown files are checked on every pull request in ci.yml.
+on:
+  schedule:
+    - cron: "23 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: links-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  external:
+    name: external links
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      # lychee v0.24.2 is set here and in the action's own default; the action downloads that release.
+      - name: Check external links
+        uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8 # v2.9.0
+        with:
+          lycheeVersion: v0.24.2
+          args: --scheme https --max-retries 3 --timeout 30 --accept '200..=299,429' --no-progress './**/*.md'
