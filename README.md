@@ -53,4 +53,8 @@ npm run build           # static export to out/
 
 ## License
 
-No license is granted. All rights reserved.
+All rights reserved. See [LICENSE](./LICENSE).
+
+## Contributing
+
+Outside pull requests are not accepted.
