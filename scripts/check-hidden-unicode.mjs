@@ -14,7 +14,13 @@ const SCOPE_DIRS = [".cursor/", ".claude/", ".vscode/", ".githooks/", ".github/"
 const SCOPE_EXT = [".md", ".mdc"];
 // Executable or config files outside those folders.
 const SCOPE_DIRS_EXTRA = ["scripts/", "deploy/"];
-const SCOPE_FILES = ["package.json", "biome.json", "next.config.ts", "wrangler.jsonc", "tsconfig.json"];
+const SCOPE_FILES = [
+  "package.json",
+  "biome.json",
+  "next.config.ts",
+  "wrangler.jsonc",
+  "tsconfig.json",
+];
 
 // Refused code points as [first, last] ranges. Emoji presentation selectors
 // (U+FE0E, U+FE0F) are allowed.
