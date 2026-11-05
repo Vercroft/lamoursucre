@@ -8,6 +8,13 @@ updates:
     cooldown:
       default-days: 7
     open-pull-requests-limit: 5
+    ignore:
+      # TypeScript 7 has no compiler API yet and the build tooling needs it. Revisit at 7.1.
+      - dependency-name: "typescript"
+        versions: [">=7"]
+      # The types follow the Node LTS in .nvmrc (24).
+      - dependency-name: "@types/node"
+        versions: [">=25"]
     groups:
       npm-root:
         patterns: ["*"]
